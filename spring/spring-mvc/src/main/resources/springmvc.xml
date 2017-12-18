@@ -8,30 +8,15 @@
         http://www.springframework.org/schema/context/spring-context.xsd
         http://www.springframework.org/schema/mvc
         http://www.springframework.org/schema/mvc/spring-mvc.xsd">
-	<!-- handlerMapping -->
-	<!-- <bean class = "org.springframework.web.servlet.handler.BeanNameUrlHandlerMapping"></bean> -->
+	<!-- 注解配置 -->
+	<mvc:annotation-driven></mvc:annotation-driven>
+	<context:component-scan base-package="com.*"></context:component-scan>
+	<bean
+		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="viewClass"
+			value="org.springframework.web.servlet.view.JstlView"></property>
+		<property name="prefix" value="/" />
+		<property name="suffix" value=".jsp" />
 
-	<bean class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
-		<property name="mappings">
-			<props>
-				<prop key="/queryList">QueryListController</prop>
-				<prop key="/queryList1">QueryListServlet</prop>
-			</props>
-		</property>
 	</bean>
-	<!-- handlerAdaptor -->
-	<bean
-		class="org.springframework.web.servlet.mvc.SimpleControllerHandlerAdapter"></bean>
-	<bean class="org.springframework.web.servlet.mvc.HttpRequestHandlerAdapter" />
-
-	<bean class="org.springframework.web.servlet.mvc.HttpRequestHandlerAdapter" />
-	<!-- handler -->
-	<bean id="QueryListController" name="/queryList"
-		class="com.cmhy.controller.QueryListController"></bean>
-	<bean id="QueryListServlet" name="/queryList1"
-		class="com.cmhy.controller.QueryListServlet"></bean>
-	<!-- view -->
-	<bean
-		class="org.springframework.web.servlet.view.InternalResourceViewResolver"/>
-		
 </beans>

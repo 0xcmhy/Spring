@@ -6,6 +6,6 @@ import lombok.Setter;
 @Getter
 @Setter
 public class BusinessApply {
-	private String BusinessType;
-	private Integer BusinessSum;
+	private String businessType;
+	private Integer businessSum;
 }

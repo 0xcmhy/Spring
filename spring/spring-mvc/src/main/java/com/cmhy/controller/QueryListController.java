@@ -13,13 +13,12 @@ public class QueryListController implements Controller{
 	@Override
 	public ModelAndView handleRequest(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		// TODO Auto-generated method stub
-		
 		ModelAndView modelAndView = new ModelAndView();
 		BusinessApply businessApply = new BusinessApply();
 		businessApply.setBusinessSum(2000);
 		businessApply.setBusinessType("p2p");
 		modelAndView.addObject("businessApply",businessApply);
-		modelAndView.setViewName("/index.jsp");
+		modelAndView.setViewName("index");
 		return modelAndView;
 	}
 
