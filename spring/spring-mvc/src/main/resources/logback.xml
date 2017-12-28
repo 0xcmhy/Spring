@@ -1,26 +1,29 @@
-<configuration>  
-  
-  	<!-- 控制台输出 -->
+<configuration>
+
+	<!-- 控制台输出 -->
 	<appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
 		<encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
 			<!--格式化输出：%d表示日期，%thread表示线程名，%-5level：级别从左显示5个字符宽度%msg：日志消息，%n是换行符 -->
-			<pattern>%X{userId} %d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{50}:%line - %msg%n</pattern>
+			<pattern>%X{userId} %d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level
+				%logger{50}:%line - %msg%n</pattern>
 			<charset>UTF-8</charset>
 		</encoder>
 	</appender>
 	<!-- 文件 -->
-  <appender name="FILE" class="ch.qos.logback.core.FileAppender">  
-    <file>E://test.log</file>  
-    <append>true</append>  
-    <encoder>  
-      <pattern>%-4relative [%thread] %-5level %logger{35} - %msg%n</pattern>  
-    </encoder>  
-  </appender>  
-          
-  <root level="DEBUG">  
-    <appender-ref ref="STDOUT" />  
-  </root>  
-  <root level="DEBUG">  
-    <appender-ref ref="FILE" />  
-  </root>
+	<appender name="FILE" class="ch.qos.logback.core.FileAppender">
+		<file>E://test.log</file>
+		<append>true</append>
+		<encoder>
+			<pattern>%-4relative [%thread] %-5level %logger{35} - %msg%n
+			</pattern>
+		</encoder>
+	</appender>
+
+	<root level="DEBUG">
+		<appender-ref ref="STDOUT"/>
+	</root>
+	<logger name="com" level="DEBUG" additivity="true">
+		<appender-ref ref="FILE"/>
+		<appender-ref ref="STDOUT"/>
+	</logger>
 </configuration>  
