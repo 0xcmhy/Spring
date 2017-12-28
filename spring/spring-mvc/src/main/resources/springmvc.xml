@@ -41,11 +41,21 @@
 		<!-- 这里配置将使用上面国际化配置的messageSource -->
 		<property name="validationMessageSource" ref="messageSource" />
 	</bean>
+	<!-- 校验message -->
 	<bean id="messageSource"
 		class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
 		<property name="basename" value="classpath:validatemessages" />
 		<property name="fileEncodings" value="utf-8" />
 		<property name="cacheSeconds" value="120" />
 	</bean>
+	<!-- spring mvc 异常统一处理 -->
 	<bean id="exceptionHandler" class="com.cmhy.exception.ExceptionHandler" />
+	<!-- 拦截器 -->
+	<mvc:interceptors>
+		<!-- 多个拦截器，顺序执行 -->
+		<mvc:interceptor>
+			<mvc:mapping path="/**" />
+			<bean class="com.cmhy.interceptor.LoginHandlerInterceptor"></bean>
+		</mvc:interceptor>
+	</mvc:interceptors>
 </beans>

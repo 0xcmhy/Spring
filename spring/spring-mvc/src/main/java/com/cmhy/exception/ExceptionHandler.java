@@ -20,8 +20,8 @@ public class ExceptionHandler implements HandlerExceptionResolver{
 			message = "未知错误";
 			businessApplyException = new BusinessApplyException(message);
 		}
-		mode.addObject("message",businessApplyException.getMessage());
-		mode.setViewName("");
+		mode.addObject("	",businessApplyException.getMessage());
+		mode.setViewName("error");
 		return mode;
 	}
 

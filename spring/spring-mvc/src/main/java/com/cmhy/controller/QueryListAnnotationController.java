@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.cmhy.exception.BusinessApplyException;
 import com.cmhy.interfaces.ValidatorGroupSecond;
 import com.cmhy.model.BusinessApply;
 
@@ -35,10 +36,13 @@ public class QueryListAnnotationController {
 		return businessApply;
 	}
 	@RequestMapping("/queryListJstl")
-	public ModelAndView queryListJstl(Integer id) {
+	public ModelAndView queryListJstl (Integer sum) throws Exception {
 		List<BusinessApply>  list = new ArrayList<BusinessApply>();
 		BusinessApply businessApply = new BusinessApply();
-		businessApply.setBusinessSum(2000);
+		if(sum == null) {
+			throw new BusinessApplyException("申请金额不能为空");
+		}
+		businessApply.setBusinessSum(sum);
 		businessApply.setBusinessType("p2p");
 		list.add(businessApply);
 		ModelAndView modelAndView = new ModelAndView();
@@ -72,6 +76,10 @@ public class QueryListAnnotationController {
 			map.put(error.getField(), error.getDefaultMessage());
 		}
 		return map;
+	}
+	@RequestMapping("/login")
+	public @ResponseBody String login(String userName) {
+		return "";
 	}
 
 }
