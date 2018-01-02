@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper  
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="businessApply">
+	<select id="findByNo" parameterType="java.lang.String"
+		resultType="com.cmhy.model.BusinessApply">
+		select * from business_apply where business_no = #{value}
+	</select>
+	<select id="findByName" parameterType="java.lang.String"
+		resultType="com.cmhy.model.BusinessApply">
+		select * from business_apply where name like '%${value}%'
+	</select>
+	<select id="findIdByName" parameterType="java.lang.String"
+		resultType="java.lang.Integer">
+		select id from business_apply where name like #{value}
+	</select>
+	<update id="updateById" parameterType="int">
+		update business_apply set business_sum = 12.00 where id = #{value}
+	</update>
+	<update id="deleteById" parameterType="int">
+		delete from business_apply where id = #{value}
+	</update>
+</mapper>

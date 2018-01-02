@@ -1,0 +1,16 @@
+package com.cmhy.model;
+
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
+
+@Getter
+@Setter
+@ToString
+public class BusinessApply {
+	private Integer id;
+	private String name;
+	private String businessNo;
+	private String businessType;
+	private Integer businessSum;
+}
