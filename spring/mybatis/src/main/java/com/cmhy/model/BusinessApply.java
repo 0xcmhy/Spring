@@ -13,4 +13,5 @@ public class BusinessApply {
 	private String businessNo;
 	private String businessType;
 	private Integer businessSum;
+	private Address address;
 }
