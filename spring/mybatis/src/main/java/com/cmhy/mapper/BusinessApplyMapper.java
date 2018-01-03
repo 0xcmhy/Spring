@@ -1,6 +1,7 @@
 package com.cmhy.mapper;
 
 import java.util.List;
+
 import com.cmhy.model.BusinessApply;
 
 public interface BusinessApplyMapper {
@@ -9,5 +10,6 @@ public interface BusinessApplyMapper {
 	public List<Integer> findIdByName(String name);
 	public void updateById(Integer id);
 	public void deleteById(Integer id);
+	public BusinessApply findIdByBa(BusinessApply ba);
 }
 

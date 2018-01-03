@@ -11,6 +11,8 @@ import org.junit.Before;
 import org.junit.Test;
 
 import com.cmhy.mapper.BusinessApplyMapper;
+import com.cmhy.model.Address;
+import com.cmhy.model.BusinessApply;
 
 public class BusinessApplyDaoTest {
 	private SqlSessionFactory sqlSessionFactory;
@@ -21,28 +23,31 @@ public class BusinessApplyDaoTest {
 	}
 	@Test
 	public void testFindByNo() {
-		
+
 	}
 
-	@Test
+
 	public void testFindByName() {
 		SqlSession sqlSession = sqlSessionFactory.openSession();
 		BusinessApplyMapper baMapper = sqlSession.getMapper(BusinessApplyMapper.class);
 		baMapper.findByName("个贷");
 		System.out.println("***********"+baMapper.findByName("个贷"));
+		System.out.println("***********"+baMapper.findByName("个贷").get(0).getAddress().getCity());
 		sqlSession.close();
 	}
-
 	@Test
-	public void testFindIdByName() {
-	}
-
-	@Test
-	public void testUpdateById() {
-	}
-
-	@Test
-	public void testDeleteById() {
+	public void testFindIdByCity() {
+		String city = "上海";
+		SqlSession sqlSession = sqlSessionFactory.openSession();
+		
+		BusinessApplyMapper businessapplyMapper = sqlSession.getMapper(BusinessApplyMapper.class);
+		BusinessApply ba = new BusinessApply();
+		Address addr = new Address();
+		addr.setCity(city);
+		ba.setAddress(addr);
+		BusinessApply baReturn =  businessapplyMapper.findIdByBa(ba);
+		sqlSession.close();
+		System.out.println(baReturn.toString());
 	}
 
 }
