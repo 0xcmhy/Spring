@@ -22,7 +22,7 @@ public class AddressTypeHandler extends BaseTypeHandler<Address>{
 	@Override
 	public Address getNullableResult(ResultSet rs, String columnName) throws SQLException {
 		// TODO Auto-generated method stub
-		 return new Address(resultSet.getLong(s));
+		return null;
 	}
 
 	@Override

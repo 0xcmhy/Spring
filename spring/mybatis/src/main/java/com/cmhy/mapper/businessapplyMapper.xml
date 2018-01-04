@@ -20,9 +20,15 @@
 		select * from business_apply where city = #{address.city}
 	</select>
 	<update id="updateById" parameterType="int">
-		update business_apply set business_sum = 12.00 where id = #{value}
+		update business_apply set
+		business_sum = 12.00 where id = #{value}
 	</update>
 	<update id="deleteById" parameterType="int">
-		delete from business_apply where id = #{value}
+		delete from business_apply
+		where id = #{value}
 	</update>
+	<select id="findCntByName" parameterType="java.lang.String"
+		resultType="int">
+		select count(*) from business_apply where name = #{value}
+	</select>
 </mapper>

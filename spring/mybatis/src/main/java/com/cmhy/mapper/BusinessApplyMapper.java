@@ -10,6 +10,7 @@ public interface BusinessApplyMapper {
 	public List<Integer> findIdByName(String name);
 	public void updateById(Integer id);
 	public void deleteById(Integer id);
-	public BusinessApply findIdByBa(BusinessApply ba);
+	public List<BusinessApply> findIdByBa(BusinessApply ba);
+	public Integer findCntByName(String name);
 }
 
