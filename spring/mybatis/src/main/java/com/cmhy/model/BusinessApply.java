@@ -1,5 +1,7 @@
 package com.cmhy.model;
 
+import java.util.List;
+
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -14,4 +16,5 @@ public class BusinessApply {
 	private String businessType;
 	private Integer businessSum;
 	private Address address;
+	private List<Address> list;
 }

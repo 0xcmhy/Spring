@@ -3,6 +3,28 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.cmhy.mapper.BusinessApplyMapper">
+	<!-- type是对应的java类型，id是resultMap唯一id -->
+	<resultMap type="com.cmhy.model.BusinessApply" id="findBaByNameResultMap">
+		<!-- id 查询结果集的唯一标识 column数据库的字段名（列名） property是java类中对应的属性名称 result是普通的列 -->
+		<id column="id" property="id" />
+		<!-- <association property="address" javaType="com.cmhy.model.Address"> -->
+		<!-- <result column="province" property="province" /> -->
+		<!-- <result column="city" property="city" /> -->
+		<!-- </association> -->
+	</resultMap>
+	<sql id="findBaByNameResultMap_where">
+		<where>
+			<if test="name != null and name != ''">
+				and name = #{name}
+			</if>
+			<if test="list != null and list != ''">
+				<foreach collection="list" item="address" open=" and city in ( "
+					separator="," close=" )">
+					#{address.city}
+				</foreach>
+			</if>
+		</where>
+	</sql>
 	<select id="findByNo" parameterType="java.lang.String"
 		resultType="com.cmhy.model.BusinessApply">
 		select * from business_apply where business_no = #{value}
@@ -30,5 +52,20 @@
 	<select id="findCntByName" parameterType="java.lang.String"
 		resultType="int">
 		select count(*) from business_apply where name = #{value}
+	</select>
+	<select id="findCntByNameMap" parameterType="java.util.HashMap"
+		resultType="int">
+		select count(*) from business_apply where name = #{name}
+	</select>
+	<select id="findBaMapByName" parameterType="java.lang.String"
+		resultType="java.util.HashMap">
+		select count(*) from business_apply where name = #{value}
+	</select>
+	<select id="findBaByNameResultMap" parameterType="com.cmhy.model.BusinessApply"
+		resultMap="findBaByNameResultMap">
+		select id, businessType , businessNo, businessSum, name,
+		province, city
+		from business_apply
+		<include refid="findBaByNameResultMap_where"></include>
 	</select>
 </mapper>
