@@ -1,11 +1,16 @@
 package com.cmhy.service;
 
+import org.springframework.stereotype.Service;
+
+import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
 @Setter
+@Getter
 @ToString
-public class BaService {
+@Service
+public class  BusinessApplyService{
 	private String businessType;
 	private Integer businessSum;
 	/**
@@ -13,15 +18,15 @@ public class BaService {
 	 * @param businessType
 	 * @param businessSum
 	 */
-	public BaService(String businessType, Integer businessSum) {
+	public BusinessApplyService(String businessType, Integer businessSum) {
 		super();
 		this.businessType = businessType;
-		this.businessSum = businessSum;
+		this.businessSum = 12;
 	}
 	/**
 	 * setter方式注入
 	 */
-	public BaService() {
+	public BusinessApplyService() {
 		super();
 	}
 	
